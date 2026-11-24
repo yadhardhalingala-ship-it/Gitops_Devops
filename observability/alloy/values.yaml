@@ -1,0 +1,15 @@
+
+controller:
+  type: daemonset
+
+alloy:
+  configMap:
+    create: false
+    name: alloy-config
+    key: config.alloy
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true

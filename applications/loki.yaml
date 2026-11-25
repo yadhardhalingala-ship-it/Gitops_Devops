@@ -24,6 +24,7 @@ spec:
     - repoURL: https://github.com/yadhardhalingala-ship-it/Gitops_Devops.git
       targetRevision: main
       path: observability/loki/manifests
+      
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

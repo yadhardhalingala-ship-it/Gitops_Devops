@@ -19,10 +19,12 @@ loki:
 
   storage:
     type: filesystem
-  
+
   rulerConfig:
+    enable_api: true
     alertmanager_url: http://prometheus-alertmanager.default.svc.cluster.local:9093
     enable_alertmanager_v2: true
+    poll_interval: 1m
     storage:
       type: local
       local:
@@ -30,10 +32,12 @@ loki:
 
 singleBinary:
   replicas: 1
+
   persistence:
     enabled: true
     storageClass: standard
     size: 5Gi
+
   extraVolumes:
     - name: loki-ruler-rules
       configMap:

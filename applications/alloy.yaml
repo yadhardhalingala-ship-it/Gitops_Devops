@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
 
 spec:
-  default: project
+  project: default
 
 
   sources:

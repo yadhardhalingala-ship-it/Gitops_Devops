@@ -19,6 +19,14 @@ loki:
 
   storage:
     type: filesystem
+  
+  rulerConfig:
+    alertmanager_url: http://prometheus-alertmanager.default.svc.cluster.local:9093
+    enable_alertmanager_v2: true
+    storage:
+      type: local
+      local:
+        directory: /etc/loki/rules
 
 singleBinary:
   replicas: 1
@@ -26,6 +34,15 @@ singleBinary:
     enabled: true
     storageClass: standard
     size: 5Gi
+  extraVolumes:
+    - name: loki-ruler-rules
+      configMap:
+        name: loki-ruler-rules
+
+  extraVolumeMounts:
+    - name: loki-ruler-rules
+      mountPath: /etc/loki/rules/fake
+      readOnly: true
 
 read:
   replicas: 0
